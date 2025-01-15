@@ -48,6 +48,14 @@ return {
       vim.keymap.set('n', '<space>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
       vim.keymap.set('n', '<space>gb', dap.run_to_cursor, { desc = 'Debug: Run to Cursor' })
 
+      vim.keymap.set('n', '<space>dt', function()
+        require('dap-go').debug_test()
+      end, { desc = 'Debug: Run unit test' })
+
+      vim.keymap.set('n', '<space>dl', function()
+        require('dap-go').debug_last_test()
+      end, { desc = 'Debug: Run last unit test' })
+
       -- Eval var under cursor
       vim.keymap.set('n', '<space>?', function()
         require('dapui').eval(nil, { enter = true })
